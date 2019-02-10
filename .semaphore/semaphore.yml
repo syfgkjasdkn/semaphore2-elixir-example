@@ -8,15 +8,15 @@ agent:
 blocks:
   - name: "setup"
     task:
+      prologue:
+        commands:
+          - kiex install 1.8
+          - sem-version elixir 1.8
       env_vars:
         - name: MIX_ENV
           value: test
       jobs:
         - name: mix and cache
-          prologue:
-            commands:
-              - kiex install 1.8
-              - sem-version elixir 1.8
           commands:
             - checkout
             - mix local.hex --force
