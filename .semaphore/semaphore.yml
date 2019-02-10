@@ -13,6 +13,10 @@ blocks:
           value: test
       jobs:
         - name: mix and cache
+          prologue:
+            commands:
+              - kiex install 1.8
+              - sem-version elixir 1.8
           commands:
             - checkout
             - mix local.hex --force
@@ -27,6 +31,8 @@ blocks:
     task:
       prologue:
         commands:
+          - kiex install 1.8
+          - sem-version elixir 1.8
           - checkout
           - cache restore mix-deps-$SEMAPHORE_GIT_BRANCH-$(checksum mix.lock),mix-deps-$SEMAPHORE_GIT_BRANCH,mix-deps-master
           - cache restore mix-build-$SEMAPHORE_GIT_BRANCH-$(checksum mix.lock),mix-build-$SEMAPHORE_GIT_BRANCH,mix-build-master
