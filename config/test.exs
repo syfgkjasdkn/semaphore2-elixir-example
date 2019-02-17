@@ -15,5 +15,5 @@ config :sema, Sema.Repo, pool: Ecto.Adapters.SQL.Sandbox
 if url = System.get_env("DATABASE_URL") do
   config :sema, Sema.Repo, url: url
 else
-  config :sema, Sema.Repo, database: "yay_test"
+  config :sema, Sema.Repo, database: "sema_test"
 end
